@@ -1,0 +1,10 @@
+{
+  "name": "exam-study-workspace",
+  "private": true,
+  "description": "스크립트는 exam-study-app으로 위임됩니다. 루트에서 npm run dev 를 쓰려고 추가했습니다.",
+  "scripts": {
+    "dev": "npm run dev --prefix exam-study-app",
+    "build": "npm run build --prefix exam-study-app",
+    "preview": "npm run preview --prefix exam-study-app"
+  }
+}

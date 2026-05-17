@@ -1,0 +1,58 @@
+{
+  "_instructions_for_other_ai_generators_ko": [
+    "반드시 이 구조 그대로: 루트 객체 안에 `\"questions\": [ … ]` 배열이 있어야 한다.",
+    "`type` 값은 문자열 세 가지만 사용한다: \"short_answer\" | \"short_sentence\" | \"essay\". (여기 적힌 정확한 철자만. 다른 타입 이름을 만들지 마라.)",
+    "단답(빈칸 1개): `answer.model` 은 하나의 문자열, `keywords` 는 string[].",
+    "단답(빈칸 여러 개): `answer.model` 은 각 빈칸 정답 문자열 배열 예) [ \"지식재산권\", \"플랫폼\", \"자산\" ]. `keywords` 는 빈칸 개수와 같은 길이의 string[][]. 각 내부 배열에는 그 빈칸에 허용할 표현 후보만 넣고, 순서가 빈칸 번호와 1:1로 대응한다.",
+    "`explanation`, `course`, `rubric`(서술형·선택), `synonyms`(단답·선택) 은 선택이다.",
+    "모든 문제의 `id` 는 서로 겹치지 않는 고유 문자열이어야 한다."
+  ],
+  "course": "템플릿 (다른 문제로 교체 가능)",
+  "generatedAt": "2026-05-02T12:00:00+09:00",
+  "questions": [
+    {
+      "id": "demo-single-blank",
+      "type": "short_answer",
+      "prompt": "2진수 1010을 10진수로 표현하면?",
+      "answer": {
+        "model": "10",
+        "keywords": ["10", "십"],
+        "synonyms": ["10."]
+      },
+      "explanation": "예시입니다. 실제 과목 문제로 교체하세요."
+    },
+    {
+      "id": "demo-multi-blank-short-answer",
+      "type": "short_answer",
+      "prompt": "콘텐츠IP는 오리지널 콘텐츠 기반 장르 확장 가능한 일련의 (①) 집합이며, 2차 활용 가능성을 지닌 콘텐츠 (②)·(③)이다. (예시 빈칸 3개)",
+      "answer": {
+        "model": ["지식재산권", "플랫폼", "자산"],
+        "keywords": [
+          ["지식재산권", "IP권", "지재권"],
+          ["플랫폼", "platform"],
+          ["자산", "asset"]
+        ]
+      }
+    },
+    {
+      "id": "demo-short-sentence",
+      "type": "short_sentence",
+      "prompt": "빅오 표기 O(n)를 한두 문장으로 설명해 보세요.",
+      "answer": {
+        "model": "입력 크기 n이 커짐에 따라 필요한 연산량이 최악의 경우에는 n에 비례하는 증가를 상한으로 나타내는 표기입니다.",
+        "keywords": ["n", "선형", "비례", "상한", "최악", "입력"],
+        "rubric": ["입력 크기 언급", "증가 또는 상한의 의미"]
+      }
+    },
+    {
+      "id": "demo-essay",
+      "type": "essay",
+      "prompt": "동일출처 정책(SOP)과 CORS의 관계를 서술해 보세요.",
+      "answer": {
+        "model": "브라우저는 기본적으로 교차 출처 요청 결과를 페이지에 노출하지 않는 동일출처 정책을 따르고, 서버가 적절한 CORS 헤더로 허용 범위를 알리면 해당 제한을 완화할 수 있습니다.",
+        "keywords": ["동일출처", "SOP", "CORS", "헤더", "브라우저"],
+        "rubric": ["SOP가 기본 제한임을 설명", "CORS가 허용을 위한 응답 메타데이터 역할임을 서술", "두 개념이 연결된다는 내용 포함"]
+      }
+    }
+  ]
+}
